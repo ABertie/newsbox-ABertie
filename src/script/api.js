@@ -1,4 +1,6 @@
 export default (async function() {
+    if (!window.location.pathname.includes("index.html")) return 
+
     let response = await fetch("https://api.nytimes.com/svc/topstories/v2/automobiles.json?api-key=LNlTIFnb0NXHyHx2WdIRXyjml6HXIlLJ")
     let data = await response.json()
     // console.log(data);
