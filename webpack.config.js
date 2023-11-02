@@ -8,6 +8,14 @@ module.exports = {
 	mode: "production",
 	plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin({
 		template: path.resolve(__dirname, "src", "index.html")
+	}),
+	new HtmlWebpackPlugin({
+		template: path.resolve(__dirname, "src", "inbox.html"),
+		filename: "inbox.html"
+	}),
+	new HtmlWebpackPlugin({
+		template: path.resolve(__dirname, "src", "settings.html"),
+		filename: "settings.html"
 	})],
 	module: {
 		rules: [
