@@ -1,4 +1,5 @@
-import { categories } from "./setCategories";
+import { categories } from "./savedInLocalstorage";
+import { swipe } from "./swipe";
 
 export default (async function() {
     if (!window.location.pathname.includes("index.html")) return
@@ -25,7 +26,7 @@ export default (async function() {
                     return response.json()
                 })
                 .then(function(data) {
-                    console.log(data);
+                    // console.log(data);
                     
                     data.results.forEach(object => {
                         if (object.item_type === "Article" || object.item_type === "Interactive") {
@@ -35,11 +36,13 @@ export default (async function() {
                                 const LI = document.createElement("li")
                                 LI.innerHTML = 
                                 `<article>
+                                    <span class="articlesCategories" hidden>${element}</span>
                                     <a href="${object.url}" target="_blank">
                                         <img src="${object.multimedia[2].url}">
                                         <h1>${object.title}</h1>
                                         <p>${object.abstract}</p>
                                     </a>
+                                    <button class="saveButton"><i class=" fa-solid fa-inbox "></i></button>
                                 </article>`
 
                                 ARTICLES.append(LI)
@@ -55,13 +58,14 @@ export default (async function() {
                         }
                         else return 
                     });
+                    swipe()
                 })
-                }
-            })
+            }
+        })
             
-            CATEGORY.append(BUTTON)
-            CATEGORY.append(ARTICLES)
-            MAIN.append(CATEGORY)
+        CATEGORY.append(BUTTON)
+        CATEGORY.append(ARTICLES)
+        MAIN.append(CATEGORY)
     });
 
 })()

@@ -1,5 +1,5 @@
-import { categories } from "./setCategories";
-import { ORIGINAL_CATEGORIES } from "./setCategories";
+import { categories } from "./savedInLocalstorage";
+import { ORIGINAL_CATEGORIES } from "./savedInLocalstorage";
 
 export default (function () {
     if (!window.location.pathname.includes("settings.html")) return

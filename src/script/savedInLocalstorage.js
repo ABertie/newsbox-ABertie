@@ -8,3 +8,11 @@ if (!localStorage.getItem("SavedCategories")) {
     localStorage.setItem("SavedCategories", categories)
 }
 else categories = localStorage.getItem("SavedCategories").split(",")
+
+export let savedArticles
+
+if (!localStorage.getItem("SaveArticles")) {
+    savedArticles = ""
+    localStorage.setItem("SaveArticles", savedArticles)
+}
+else savedArticles = localStorage.getItem("SaveArticles").split(",")

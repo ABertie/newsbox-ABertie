@@ -1,4 +1,8 @@
 // import your files here e.g like this: import "./style.scss"
 import "./script/checkCategories"
+import "./script/deleteJSONfromLocalStorage"
+import "./script/getJSONfromLocalStorage"
+import "./script/saveJSONtoLocalStorage"
 import "./script/api"
+import "./script/swipe"
 import "./style.scss"
