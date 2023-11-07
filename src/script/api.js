@@ -1,8 +1,7 @@
+import { categories } from "./categories";
+
 export default (async function() {
     if (!window.location.pathname.includes("index.html")) return
-    
-    let categories = ["arts", "automobiles", "books", "business", "fashion", "food", "health", "home", "insider", "magazine", "movies", "nyregion", "obituaries", "opinion", "politics", "realestate", "science", "sundayreview", "technology", "theater", "t-magazine", "travel", "upshot", "us", "world"]
-    // , "sports" only makes Promo
 
     const COUNT = 7 // count of articles for each categorie - 1
     
