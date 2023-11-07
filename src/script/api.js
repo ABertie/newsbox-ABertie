@@ -10,7 +10,7 @@ export default (async function() {
     categories.forEach(element => {
         const CATEGORY = document.createElement("section")
         const BUTTON = document.createElement("button")
-        const ARTICLES = document.createElement("div")
+        const ARTICLES = document.createElement("ul")
         BUTTON.innerHTML = element
         BUTTON.addEventListener("click", function clickHandler() {
             
@@ -25,28 +25,32 @@ export default (async function() {
                     return response.json()
                 })
                 .then(function(data) {
-                    // console.log(data);
+                    console.log(data);
                     
                     data.results.forEach(object => {
                         if (object.item_type === "Article" || object.item_type === "Interactive") {
                             if (ARTICLES.childElementCount > COUNT) return
 
                             if (object.multimedia) {
-                                const ARTICLE = document.createElement("article")
-                                ARTICLE.innerHTML = `
-                                <img src="${object.multimedia[2].url}">
-                                <h1>${object.title}</h1>
-                                <p>${object.abstract}</p>`
+                                const LI = document.createElement("li")
+                                LI.innerHTML = 
+                                `<article>
+                                    <a href="${object.url}" target="_blank">
+                                        <img src="${object.multimedia[2].url}">
+                                        <h1>${object.title}</h1>
+                                        <p>${object.abstract}</p>
+                                    </a>
+                                </article>`
 
-                                ARTICLES.append(ARTICLE)
+                                ARTICLES.append(LI)
                             } 
                             else {
-                                const ARTICLE = document.createElement("article")
-                                ARTICLE.innerHTML = `
+                                const LI = document.createElement("article")
+                                LI.innerHTML = `
                                 <h1>${object.title}</h1>
                                 <p>${object.abstract}</p>`
 
-                                ARTICLES.append(ARTICLE)
+                                ARTICLES.append(LI)
                             }
                         }
                         else return 
