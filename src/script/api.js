@@ -1,4 +1,4 @@
-import { categories } from "./categories";
+import { categories } from "./setCategories";
 
 export default (async function() {
     if (!window.location.pathname.includes("index.html")) return
