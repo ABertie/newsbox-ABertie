@@ -1,11 +1,18 @@
-import { saveArticle } from "./saveArticle";
+import { saveArticle } from "./savedArticle";
+import { deleteArticle } from "./savedArticle";
 
-export function swipe() {    
+export function swipe() {   
     const ARTICLES = document.querySelectorAll("article")
     ARTICLES.forEach(article => {
-        const BUTTON = article.querySelector(".saveButton")
-        BUTTON.addEventListener("click", saveArticle)
-
+        if (article.querySelector(".saveButton")) {
+            const SAVE_BUTTON = article.querySelector(".saveButton")
+            SAVE_BUTTON.addEventListener("click", saveArticle)    
+        }
+        else if (article.querySelector(".deleteButton")) {
+            const DELETE_BUTTON = article.querySelector(".deleteButton")
+            DELETE_BUTTON.addEventListener("click", deleteArticle)
+        }
+        
         article.addEventListener("touchstart", touchHandler)
         article.addEventListener("touchend", touchHandler)
         

@@ -32,8 +32,8 @@ export default (async function() {
                         if (object.item_type === "Article" || object.item_type === "Interactive") {
                             if (ARTICLES.childElementCount > COUNT) return
 
+                            const LI = document.createElement("li")
                             if (object.multimedia) {
-                                const LI = document.createElement("li")
                                 LI.innerHTML = 
                                 `<article>
                                     <span class="articlesCategories" hidden>${element}</span>
@@ -42,16 +42,21 @@ export default (async function() {
                                         <h1>${object.title}</h1>
                                         <p>${object.abstract}</p>
                                     </a>
-                                    <button class="saveButton"><i class=" fa-solid fa-inbox "></i></button>
+                                    <button class="saveButton"><i class="fa-solid fa-inbox"></i></button>
                                 </article>`
 
                                 ARTICLES.append(LI)
                             } 
                             else {
-                                const LI = document.createElement("article")
                                 LI.innerHTML = `
-                                <h1>${object.title}</h1>
-                                <p>${object.abstract}</p>`
+                                <article>
+                                    <span class="articlesCategories" hidden>${element}</span>
+                                    <a href="${object.url}" target="_blank">
+                                        <h1>${object.title}</h1>
+                                        <p>${object.abstract}</p>
+                                    </a>
+                                    <button class="saveButton"><i class="fa-solid fa-inbox"></i></button>
+                                </article>`
 
                                 ARTICLES.append(LI)
                             }

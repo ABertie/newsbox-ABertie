@@ -11,8 +11,8 @@ else categories = localStorage.getItem("SavedCategories").split(",")
 
 export let savedArticles
 
-if (!localStorage.getItem("SaveArticles")) {
+if (!localStorage.getItem("SavedArticles")) {
     savedArticles = ""
-    localStorage.setItem("SaveArticles", savedArticles)
+    localStorage.setItem("SavedArticles", savedArticles)
 }
-else savedArticles = localStorage.getItem("SaveArticles").split(",")
+else savedArticles = localStorage.getItem("SavedArticles").split(",")

@@ -29,7 +29,6 @@ body {
 
 ul {
 	list-style: none;
-	overflow: hidden;
 }
 
 article {
@@ -50,6 +49,8 @@ article {
 
 	}
 }
+
+/* .saveButton i, .deleteButton i*/
 
 @keyframes moveLeft {
     0% {
