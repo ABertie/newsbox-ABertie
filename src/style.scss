@@ -16,12 +16,14 @@ body {
 	--font-secondary: "rift-soft", sans-serif;
 
 	font-family: var(--font-primary);
+	position: relative;
 }
 
 /* body.darkTheme {} */
 
 main {
 	overflow-x: hidden;
+	min-height: 50vh;
 }
 
 * {
