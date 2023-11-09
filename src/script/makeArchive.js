@@ -1,5 +1,5 @@
-import { categories } from "./savedInLocalstorage";
 import getJSONfromLocalStorage from "./getJSONfromLocalStorage";
+import { CATEGORIES_ICONS } from "./savedInLocalstorage";
 import { swipe } from "./swipe";
 
 export default (function () {
@@ -7,15 +7,26 @@ export default (function () {
     
     const DATA = getJSONfromLocalStorage("SavedArticles")
     const MAIN = document.querySelector("main")
-    
-    categories.forEach(element => {
+    let categories = []
+
+    DATA.forEach(object => {
+        if (categories.includes(object.category)) return
+        categories.push(object.category)
+        let element = object.category
+        
         const CATEGORY = document.createElement("section")
+        let icon
+        CATEGORIES_ICONS.forEach(object => {
+            if (object.category === element) icon = object.icon
+        })
         const BUTTON = document.createElement("button")
         const ARTICLES = document.createElement("ul")
-        BUTTON.innerHTML = element
+        BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
         BUTTON.addEventListener("click", function () {
-    
+            BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-down"></i>'
+            
             if (ARTICLES.innerHTML !== "") {
+                BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
                 ARTICLES.innerHTML = ""
             }
             else {

@@ -1,4 +1,4 @@
-import { categories } from "./savedInLocalstorage";
+import { categories , CATEGORIES_ICONS } from "./savedInLocalstorage";
 import { ORIGINAL_CATEGORIES } from "./savedInLocalstorage";
 
 export default (function () {
@@ -8,7 +8,11 @@ export default (function () {
     
     ORIGINAL_CATEGORIES.forEach(elem => {
         const LABEL = document.createElement("label")
-        LABEL.innerHTML = `${elem}<input type="checkbox" name="${elem}" ${localStorage.getItem("SavedCategories").includes(elem) ? "checked" : ""}>`
+        let icon
+        CATEGORIES_ICONS.forEach(object => {
+            if (object.category === elem) icon = object.icon
+        })
+        LABEL.innerHTML = `<i class="fa-solid fa-${icon}"></i>${elem}<input type="checkbox" name="${elem}" ${localStorage.getItem("SavedCategories").includes(elem) ? "checked" : ""}>`
         CHECKLIST.append(LABEL)
         
     })

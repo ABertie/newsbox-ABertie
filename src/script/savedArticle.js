@@ -6,6 +6,7 @@ export function saveArticle(event) {
     let button
     if (event.target.innerHTML === "") button = event.target.parentElement
     else button = event.target
+    button.innerHTML = '<i class="fa-solid fa-check-to-slot"></i>'
     const LI = button.parentElement.parentElement
     const LINK = LI.querySelector("a").href
     

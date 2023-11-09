@@ -1,5 +1,84 @@
 export const ORIGINAL_CATEGORIES = ["arts", "automobiles", "books", "business", "fashion", "food", "health", "home", "insider", "magazine", "movies", "nyregion", "obituaries", "opinion", "politics", "realestate", "science", "sundayreview", "technology", "theater", "t-magazine", "travel", "upshot", "us", "world"]
+
 ORIGINAL_CATEGORIES.sort()
+
+export const CATEGORIES_ICONS = [{
+        category: "arts",
+        icon: "palette"
+    },{
+        category: "automobiles",
+        icon: "car"
+    },{
+        category: "books",
+        icon: "book"
+    },{
+        category: "business",
+        icon: "briefcase"
+    },{
+        category: "fashion",
+        icon: "shirt"
+    },{
+        category: "food",
+        icon: "utensils"
+    },{
+        category: "health",
+        icon: "heart-pulse"
+    },{
+        category: "home",
+        icon: "timeline"
+    },{
+        category: "insider",
+        icon: "people-group"
+    },{
+        category: "magazine",
+        icon: "newspaper"
+    },{
+        category: "movies",
+        icon: "clapperboard"
+    },{
+        category: "nyregion",
+        icon: "location-dot"
+    },{
+        category: "obituaries",
+        icon: "skull"
+    },{
+        category: "opinion",
+        icon: "brain"
+    },{
+        category: "politics",
+        icon: "landmark"
+    },{
+        category: "realestate",
+        icon: "house-user"
+    },{
+        category: "science",
+        icon: "flask"
+    },{
+        category: "sundayreview",
+        icon: "calendar-day"
+    },{
+        category: "technology",
+        icon: "microchip"
+    },{
+        category: "theater",
+        icon: "masks-theater"
+    },{
+        category: "t-magazine",
+        icon: "t"
+    },{
+        category: "travel",
+        icon: "plane"
+    },{
+        category: "upshot",
+        icon: "clipboard-check"
+    },{
+        category: "us",
+        icon: "users"
+    },{
+        category: "world",
+        icon: "earth-americas"
+    }
+]
 
 export let categories 
 
