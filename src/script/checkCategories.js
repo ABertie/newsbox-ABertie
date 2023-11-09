@@ -1,24 +1,19 @@
 import { categories , CATEGORIES_ICONS } from "./savedInLocalstorage";
-import { ORIGINAL_CATEGORIES } from "./savedInLocalstorage";
 
 export default (function () {
     if (!window.location.pathname.includes("settings.html")) return
 
     const CHECKLIST = document.querySelector(".categoriesChecklist")
     
-    ORIGINAL_CATEGORIES.forEach(elem => {
+    CATEGORIES_ICONS.forEach(object => {
+        let category = object.category
+        let icon = object.icon
         const LABEL = document.createElement("label")
-        let icon
-        CATEGORIES_ICONS.forEach(object => {
-            if (object.category === elem) icon = object.icon
-        })
-        LABEL.innerHTML = `<i class="fa-solid fa-${icon}"></i>${elem}<input type="checkbox" name="${elem}" ${localStorage.getItem("SavedCategories").includes(elem) ? "checked" : ""}>`
+        LABEL.innerHTML = `<i class="fa-solid fa-${icon}"></i>${category}<input type="checkbox" name="${category}" ${localStorage.getItem("SavedCategories").includes(category) ? "checked" : ""}>`
         CHECKLIST.append(LABEL)
-        
     })
     
     const INPUT = CHECKLIST.querySelectorAll("input")
-    
 
     INPUT.forEach(input => {
         input.addEventListener("click", checkhandler)

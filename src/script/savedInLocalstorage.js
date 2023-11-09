@@ -1,6 +1,4 @@
-export const ORIGINAL_CATEGORIES = ["arts", "automobiles", "books", "business", "fashion", "food", "health", "home", "insider", "magazine", "movies", "nyregion", "obituaries", "opinion", "politics", "realestate", "science", "sundayreview", "technology", "theater", "t-magazine", "travel", "upshot", "us", "world"]
-
-ORIGINAL_CATEGORIES.sort()
+export const ORIGINAL_CATEGORIES = ["arts", "automobiles", "books", "business", "fashion", "food", "health", "home", "insider", "magazine", "movies", "nyregion", "obituaries", "opinion", "politics", "realestate", "science", "sundayreview", "t-magazine", "technology", "theater", "travel", "upshot", "us", "world"]
 
 export const CATEGORIES_ICONS = [{
         category: "arts",
@@ -57,14 +55,14 @@ export const CATEGORIES_ICONS = [{
         category: "sundayreview",
         icon: "calendar-day"
     },{
+        category: "t-magazine",
+        icon: "t"
+    },{
         category: "technology",
         icon: "microchip"
     },{
         category: "theater",
         icon: "masks-theater"
-    },{
-        category: "t-magazine",
-        icon: "t"
     },{
         category: "travel",
         icon: "plane"
