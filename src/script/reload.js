@@ -24,7 +24,9 @@ export default (function () {
             
             if(Direction) {
                 MAIN.prepend(LOADER)
-                location.reload(location.href)
+                setTimeout(() => {
+                    location.reload()
+                }, 500);
                 Direction = null
             }
 
