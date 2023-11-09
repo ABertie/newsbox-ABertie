@@ -17,7 +17,7 @@ export default (function () {
         else if (event.type === "touchend") {
 
             let Direction
-            const TOLERANCE = 50
+            const TOLERANCE = 100
             
             if (y + TOLERANCE < TOUCH__EVENT) Direction = "Down"
             else Direction = null
