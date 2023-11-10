@@ -7,7 +7,9 @@ export default (function () {
         localStorage.setItem("theme", "lightTheme")
     } 
     
-    document.body.classList.add(localStorage.getItem("theme"))
+    if (localStorage.getItem("theme") === "darkTheme") {
+        document.body.classList.add(localStorage.getItem("theme"))
+    }
     
     if (!window.location.pathname.includes("settings.html")) return
 
