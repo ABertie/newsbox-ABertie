@@ -9,7 +9,7 @@ export default (function () {
         let category = object.category
         let icon = object.icon
         const LABEL = document.createElement("label")
-        LABEL.innerHTML = `<!-- <i class="fa-solid fa-${icon}"></i> -->${category}<input type="checkbox" name="${category}" ${localStorage.getItem("SavedCategories").includes(category) ? "checked" : ""}>`
+        LABEL.innerHTML = `<!-- <i class="fa-solid fa-${icon}"></i> -->${category}<input type="checkbox" name="${category}" ${localStorage.getItem("SavedCategories").includes(category) ? "checked" : ""}><span class="slider"></span>`
         CHECKLIST.append(LABEL)
     })
     

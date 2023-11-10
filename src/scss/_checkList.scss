@@ -1,0 +1,82 @@
+@use "./variables" as var;
+
+.categoriesChecklist {
+
+    $border-radius: 1em;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+
+    margin: 1em;
+    background-color: inherit;
+    box-shadow: .05em .05em .7em .1em rgba(var.$typography-onyx, .1);
+    border-radius: $border-radius;
+
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var.$primary-drab;
+
+    label:first-of-type {
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+    }
+
+    label {
+        $slider-height: 1.25em; /* withuot space */
+        $slider-width: 2.25em; /* withuot space */
+        $slider-space: .1em;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        background-color: var.$typography-snow;
+        padding: 1em;
+
+        font-size: .9em;
+
+        input {
+            opacity: 0;
+        }
+
+        .slider {
+            display: block;
+
+            border-radius: $slider-height + $slider-space * 2;
+            width: $slider-width + $slider-space * 2;
+            height: $slider-height + $slider-space * 2;
+            background-color: var.$secondary-fossil;
+            
+            position: relative;
+
+            transition: all .5s ease;
+        }
+        
+        .slider::after{
+            content: ' ';
+            height: $slider-height;
+            width: $slider-height;
+            border-radius: $slider-height;
+            position: absolute;
+            top: $slider-space;
+            right: $slider-width - $slider-height + $slider-space;
+            background-color: var.$typography-snow;
+            transition: all .3s ease;
+        }
+        
+        input:checked + .slider{
+            background-color: var.$primary-sage;
+        }
+        
+        input:checked + .slider::after{
+            right: $slider-space;
+        }
+        
+    }
+
+    label:last-of-type {
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+    }
+}
