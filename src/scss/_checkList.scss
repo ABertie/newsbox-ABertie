@@ -55,13 +55,17 @@
         
         .slider::after{
             content: ' ';
+
             height: $slider-height;
             width: $slider-height;
             border-radius: $slider-height;
+            box-shadow: .1em .1em .7em rgba(var.$typography-onyx, .5);
+            background-color: var.$typography-snow;
+
             position: absolute;
             top: $slider-space;
             right: $slider-width - $slider-height + $slider-space;
-            background-color: var.$typography-snow;
+
             transition: all .3s ease;
         }
         
