@@ -1,0 +1,162 @@
+@use "./variables" as var;
+@use "./darkTheme";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    gap: 2px;
+
+    font-family: var(--font);
+    color: var(--darkest);
+    font-size: 2vh;
+    background-color: var(--light);
+}
+
+h1, h2, h3 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+h2 {
+    color: var(--primary-sage);
+    font-size: 1.75em;
+
+    margin-top: 1em;
+}
+
+h3 {
+    color: var(--darkest);
+    font-weight: 400;
+
+    padding-bottom: 1em;
+    margin-bottom: 2.5em;
+
+    position: relative;
+
+    &::after {
+        content: '';
+
+        margin: auto;
+        width: 1.5em;
+        height: .1em;
+        background-color: var(--lightest);
+
+        position: absolute;
+        inset: auto 0 0 0;
+    }
+}
+
+header {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 1em;
+
+    background-color: var(--lightest);
+    padding: 1.5em;
+    width: 100vw;
+    box-shadow: var(--big-shadow);
+
+    color: var(--darkest);
+
+    position: sticky;
+    inset: 0 0 auto 0;
+    z-index: 100;
+
+    :nth-child(3){
+        text-align: end;
+    }
+}
+
+main {
+	overflow-x: hidden;
+    text-align: center;
+
+    position: relative;
+}
+
+footer {
+    padding: 2em;
+
+    font-size: .9em;
+    text-align: center;
+    color: var(--dark);
+
+    position: relative;
+    inset: auto 0 0 0;
+}
+
+ul {
+    display: grid;
+    gap: 1px;
+    
+	padding-top: 1px;
+	padding-bottom: 1px;
+    margin-bottom: auto;
+    
+	list-style: none;
+}
+
+i, a {
+    color: inherit;
+    text-decoration: none;
+}
+
+form {
+    background-color: var(--lightest);
+    padding: 1em;
+    margin-bottom: 2px;
+    
+    label {
+        display: block;
+
+        background-color: var(--light);
+        
+        text-align: start;
+        
+        position: relative;
+        
+        input {
+            padding: 1em 1.5em;
+            width: 100%;
+            border: none;
+            background-color: transparent;
+
+            color: var(--darkest);
+
+            &::placeholder {
+                color: var(--dark);
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        button {
+            border: none;
+            background-color: transparent;
+
+            color: var(--mid);
+
+            position: absolute;
+            inset: auto 1.25em 1em auto;
+        }
+    }
+}
+
+.fa-spinner {
+    margin: .6em auto;
+
+    color: var(--darkest);
+    font-size: 2em;
+    
+    position: absolute;
+    inset: 0 0 auto 0;
+    z-index: 50;
+}

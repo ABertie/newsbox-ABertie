@@ -1,0 +1,35 @@
+@use "./variables" as var;
+
+body{
+    --brand: var(--primary-rust);
+    --darkest: var(--primary-drab);
+    --dark: var(--typography-slate);
+    --mid: var(--secondary-fossil);
+    --light: var(--secondary-ice);
+    --lightest: var(--typography-snow);
+
+    --small-light-shadow: .1em .1em .7em rgba(27, 28, 32, .3); // rgba(var(--typography-onyx), .3)
+    --small-dark-shadow: .1em .1em .7em rgba(27, 28, 32, .5); // rgba(var(--typography-onyx), .5)
+    --big-shadow: .05em .05em .7em .1em rgba(27, 28, 32, .1); // rgba(var(--typography-onyx), .1)
+}
+
+body.darkTheme {
+    --brand: var(--secondary-sand);
+    --darkest: var(--secondary-ice);
+    --dark: var(--secondary-fossil);
+    --mid: var(--secondary-ice);
+    --light: var(--primary-drab);
+    --lightest: var(--typography-slate);
+} 
+
+.themeButton {
+    margin-top: 3em;
+    padding: 1em;
+    border-radius: 2em;
+    background-color: var(--light);
+    border: .1em solid var(--mid);
+
+    color: var(--darkest);
+    text-transform: uppercase;
+    font-weight: lighter;
+}
