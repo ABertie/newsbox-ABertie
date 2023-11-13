@@ -1,3 +1,19 @@
 @use "./variables" as var;
 
 /* body.darkTheme {} */
+
+.themeButton {
+    $light: var.$secondary-ice;
+    $mid: var.$secondary-fossil;
+    $dark: var.$primary-drab;
+
+    margin-top: 3em;
+    padding: 1em;
+    border-radius: 2em;
+    background-color: $light;
+    border: .1em solid $mid;
+
+    color: $dark;
+    text-transform: uppercase;
+    font-weight: lighter;
+}

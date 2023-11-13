@@ -38,7 +38,7 @@ export function swipe() {
                         article.removeEventListener("touchend", touchHandler)
                     })
                     article.addEventListener("animationend", function() {
-                        article.style.left = "-25%"
+                        article.style.left = "-26vw"
                         article.addEventListener("touchstart", touchHandler)
                         article.addEventListener("touchend", touchHandler)
                     })

@@ -20,6 +20,7 @@ export default (function () {
             if (object.category === element) icon = object.icon
         })
         const BUTTON = document.createElement("button")
+        BUTTON.classList.add("categoryButton")
         const ARTICLES = document.createElement("ul")
         BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
         BUTTON.addEventListener("click", function () {

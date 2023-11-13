@@ -1,19 +1,97 @@
 @use "./variables" as var;
 
+.categoryButton {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: .5em;
+
+	width: 100%;
+	border: none;
+	background-color: var.$typography-snow;
+	padding: .5em 1em;
+
+	text-align: start;
+	font-size: .9em;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: var.$primary-drab;
+
+	i {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 2em;
+		height: 2em;
+
+		font-size: 1.1em;
+	}
+
+	i:first-of-type {
+		padding: .5em;
+		box-shadow:.1em .1em .7em rgba(var.$typography-onyx, .3);
+		border-radius: 50%;
+
+		color: var.$primary-rust;
+	}
+	
+}
+
 article {
 	display: grid;
-	grid-template-columns: 100vw 25vw;
+	grid-template-columns: 100% 26vw;
 
+	background-color: var.$typography-snow;
+	
+	color: var.$primary-drab;
+	text-align: start;
+	
 	position: relative;
-
+	
 	a {
 		display: grid;
 		grid-template-columns: 1fr 3fr;
 		grid-template-rows: auto auto;
+		column-gap: 1em;
+
+		padding: 1em;
 
 		img {
+			grid-area: 1/1/3/2;
+			align-self: center;
+
 			width: 100%;
-			grid-area: 1/1/3/2; 
+			border-radius: 50%;
 		}
+
+		h1{
+			align-self: self-end;
+
+			font-size: .9em;
+			text-align: start;
+		}
+
+		p {
+			font-size: .85em;
+			font-weight: 500;
+			color: var.$typography-slate;
+		}
+	}
+
+	button {
+		border: none;
+		width: 100%;
+		height: 100%;
+		
+		color: var.$typography-snow;
+		font-size: 1.25em;
+		
+	}
+	.saveButton {
+		background-color: var.$primary-sage;
+	}
+	.deleteButton {
+		background-color: var.$primary-danger;
 	}
 }
