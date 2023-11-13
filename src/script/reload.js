@@ -23,10 +23,11 @@ export default (function () {
             else Direction = null
             
             if(Direction) {
+                LOADER.style.animation = `fa-spin 1s steps(8) infinite, move${Direction} .2s ease`
                 MAIN.prepend(LOADER)
                 setTimeout(() => {
                     location.reload()
-                }, 500);
+                }, 1000);
                 Direction = null
             }
 

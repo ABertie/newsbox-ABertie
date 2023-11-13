@@ -76,6 +76,8 @@ header {
 main {
 	overflow-x: hidden;
     text-align: center;
+
+    position: relative;
 }
 
 footer {
@@ -146,4 +148,15 @@ form {
             inset: auto 1.25em 1em auto;
         }
     }
+}
+
+.fa-spinner {
+    margin: .6em auto;
+
+    color: var(--darkest);
+    font-size: 2em;
+    
+    position: absolute;
+    inset: 0 0 auto 0;
+    z-index: 50;
 }
