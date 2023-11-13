@@ -10,12 +10,12 @@
 
     margin: 1em;
     background-color: inherit;
-    box-shadow: .05em .05em .7em .1em rgba(var.$typography-onyx, .1);
+    box-shadow: var(--big-shadow);
     border-radius: $border-radius;
 
     text-transform: uppercase;
     font-weight: 700;
-    color: var.$primary-drab;
+    color: var(--darkest);
 
     label:first-of-type {
         border-top-left-radius: $border-radius;
@@ -31,7 +31,7 @@
         justify-content: space-between;
         align-items: center;
 
-        background-color: var.$typography-snow;
+        background-color: var(--lightest);
         padding: 1em;
 
         font-size: .9em;
@@ -46,7 +46,7 @@
             border-radius: $slider-height + $slider-space * 2;
             width: $slider-width + $slider-space * 2;
             height: $slider-height + $slider-space * 2;
-            background-color: var.$secondary-fossil;
+            background-color: var(--mid);
             
             position: relative;
 
@@ -59,8 +59,8 @@
             height: $slider-height;
             width: $slider-height;
             border-radius: $slider-height;
-            box-shadow: .1em .1em .7em rgba(var.$typography-onyx, .5);
-            background-color: var.$typography-snow;
+            box-shadow: var(--small-dark-shadow);
+            background-color: var(--lightest);
 
             position: absolute;
             top: $slider-space;
@@ -70,7 +70,7 @@
         }
         
         input:checked + .slider{
-            background-color: var.$primary-sage;
+            background-color: var(--primary-sage);
         }
         
         input:checked + .slider::after{

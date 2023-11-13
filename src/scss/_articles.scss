@@ -1,4 +1,5 @@
 @use "./variables" as var;
+@use "./darkTheme";
 
 .categoryButton {
 	display: grid;
@@ -8,14 +9,14 @@
 
 	width: 100%;
 	border: none;
-	background-color: var.$typography-snow;
+	background-color: var(--lightest);
 	padding: .5em 1em;
 
 	text-align: start;
 	font-size: .9em;
 	font-weight: 600;
 	text-transform: uppercase;
-	color: var.$primary-drab;
+	color: var(--darkest);
 
 	i {
 		display: flex;
@@ -30,10 +31,10 @@
 
 	i:first-of-type {
 		padding: .5em;
-		box-shadow:.1em .1em .7em rgba(var.$typography-onyx, .3);
+		box-shadow: var(--small-light-shadow);
 		border-radius: 50%;
 
-		color: var.$primary-rust;
+		color: var(--brand);
 	}
 	
 }
@@ -42,9 +43,9 @@ article {
 	display: grid;
 	grid-template-columns: 100% 26vw;
 
-	background-color: var.$typography-snow;
+	background-color: var(--lightest);
 	
-	color: var.$primary-drab;
+	color: var(--darkest);
 	text-align: start;
 	
 	position: relative;
@@ -75,7 +76,7 @@ article {
 		p {
 			font-size: .85em;
 			font-weight: 500;
-			color: var.$typography-slate;
+			color: var(--dark);
 		}
 	}
 
@@ -84,14 +85,14 @@ article {
 		width: 100%;
 		height: 100%;
 		
-		color: var.$typography-snow;
+		color: var(--lightest);
 		font-size: 1.25em;
 		
 	}
 	.saveButton {
-		background-color: var.$primary-sage;
+		background-color: var(--primary-sage);
 	}
 	.deleteButton {
-		background-color: var.$primary-danger;
+		background-color: var(--primary-danger);
 	}
 }

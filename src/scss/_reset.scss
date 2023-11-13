@@ -1,4 +1,5 @@
 @use "./variables" as var;
+@use "./darkTheme";
 
 * {
     margin: 0;
@@ -10,12 +11,10 @@ body {
     display: grid;
     gap: 2px;
 
-    --text: var.$typography-onyx;
-
-    font-family: var.$font-primary;
-    color: var(--text);
+    font-family: var(--font);
+    color: var(--darkest);
     font-size: 2vh;
-    background-color: var.$secondary-ice;
+    background-color: var(--light);
 }
 
 h1, h2, h3 {
@@ -25,14 +24,14 @@ h1, h2, h3 {
 }
 
 h2 {
-    color: var.$primary-sage;
+    color: var(--primary-sage);
     font-size: 1.75em;
 
     margin-top: 1em;
 }
 
 h3 {
-    color: var.$primary-drab;
+    color: var(--darkest);
     font-weight: 400;
 
     padding-bottom: 1em;
@@ -46,7 +45,7 @@ h3 {
         margin: auto;
         width: 1.5em;
         height: .1em;
-        background-color: var.$typography-snow;
+        background-color: var(--lightest);
 
         position: absolute;
         inset: auto 0 0 0;
@@ -58,12 +57,12 @@ header {
     grid-template-columns: repeat(3, auto);
     gap: 1em;
 
-    background-color: var.$typography-snow;
+    background-color: var(--lightest);
     padding: 1.5em;
     width: 100vw;
-    box-shadow: .05em .05em .7em .1em rgba(var.$typography-onyx, .1);
+    box-shadow: var(--big-shadow);
 
-    color: var.$primary-drab;
+    color: var(--darkest);
 
     position: sticky;
     inset: 0 0 auto 0;
@@ -84,7 +83,7 @@ footer {
 
     font-size: .9em;
     text-align: center;
-    color: var.$typography-slate;
+    color: var(--dark);
 
     position: relative;
     inset: auto 0 0 0;
@@ -107,14 +106,14 @@ i, a {
 }
 
 form {
-    background-color: var.$typography-snow;
+    background-color: var(--lightest);
     padding: 1em;
     margin-bottom: 2px;
     
     label {
         display: block;
 
-        background-color: var.$secondary-ice;
+        background-color: var(--light);
         
         text-align: start;
         
@@ -126,10 +125,10 @@ form {
             border: none;
             background-color: transparent;
 
-            color: var.$primary-drab;
+            color: var(--darkest);
 
             &::placeholder {
-                color: var.$typography-slate;
+                color: var(--dark);
             }
 
             &:focus {
@@ -141,7 +140,7 @@ form {
             border: none;
             background-color: transparent;
 
-            color: var.$secondary-fossil;
+            color: var(--mid);
 
             position: absolute;
             inset: auto 1.25em 1em auto;
