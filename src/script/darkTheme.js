@@ -11,7 +11,7 @@ export default (function () {
         document.body.classList.add(localStorage.getItem("theme"))
     }
     
-    if (!window.location.pathname.includes("settings.html")) return
+    if (window.location.pathname !== "/settings") return // !window.location.pathname.includes("settings.html") || 
 
     const BUTTON = document.querySelector(".themeButton")
     BUTTON.innerHTML = `Toggle ${localStorage.getItem("theme") === "darkTheme" ? "light" : "dark"} mode`
