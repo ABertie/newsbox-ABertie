@@ -33,7 +33,7 @@ export function deleteArticle(event) {
     
     DATA.forEach(function (object, index) {
         if (object.url === LINK) {
-            let deleteTime = 120000 // 2 min
+            let deleteTime = 10000 // 10 sec
             let counter = deleteTime / 1000 
             const TIMER = setTimeout(deletePOPUP, deleteTime); 
             TIMER
