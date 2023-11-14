@@ -38,33 +38,21 @@ export default (function () {
                     if (object.category !== element) return
                     const LI = document.createElement("li")
 
-                    if (object.img) {
-                        LI.innerHTML = 
-                        `<article>
-                            <span class="articlesCategories" hidden>${object.category}</span>
-                            <a href="${object.url}" target="_blank">
-                                <img src="${object.img}">
-                                <h1>${object.heading}</h1>
-                                <p>${object.text}</p>
-                            </a>
-                            <button class="deleteButton"><i class="fa-solid fa-trash"></i></button>
-                        </article>`
+                    LI.innerHTML = 
+                    `<article>
+                        <span class="articlesCategories" hidden>${object.category}</span>
+                        <a href="${object.url}" target="_blank">
+                        ${object.img 
+                            ? `<img src="${object.img}">`
+                            : ""}
+                            <h1>${object.heading}</h1>
+                            <p>${object.text}</p>
+                        </a>
+                        <button class="deleteButton"><i class="fa-solid fa-trash"></i></button>
+                    </article>`
 
-                        ARTICLES.append(LI)
-                    } 
-                    else {
-                        LI.innerHTML = `
-                        <article>
-                            <span class="articlesCategories" hidden>${object.category}</span>
-                            <a href="${object.url}" target="_blank">
-                                <h1>${object.heading}</h1>
-                                <p>${object.text}</p>
-                            </a>
-                            <button class="deleteButton"><i class="fa-solid fa-trash"></i></button>
-                        </article>`
-
-                        ARTICLES.append(LI)
-                    }
+                    ARTICLES.append(LI)
+                    
                 });
                 swipe()
             }

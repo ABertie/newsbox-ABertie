@@ -15,7 +15,7 @@ export function saveArticle(event) {
     saveJSONtoLocalStorage("SavedArticles", {
         url: LI.querySelector("a").href,
         category: LI.querySelector("span").innerHTML,
-        img: LI.querySelector("img").src || null,
+        img: LI.querySelector("img") ? LI.querySelector("img").src : "",
         heading: LI.querySelector("h1").innerHTML,
         text: LI.querySelector("p").innerHTML
     })

@@ -34,6 +34,7 @@ export function swipe() {
     
                 if(Direction) {
                     article.addEventListener("animationstart", function() {
+                        article.querySelector("a").style.gridTemplateColumns = "1fr 3fr"
                         article.removeEventListener("touchstart", touchHandler)
                         article.removeEventListener("touchend", touchHandler)
                     })

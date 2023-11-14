@@ -1,5 +1,3 @@
-@use "./variables" as var;
-
 body{
     --brand: var(--primary-rust);
     --darkest: var(--primary-drab);
