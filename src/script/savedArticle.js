@@ -29,13 +29,50 @@ export function deleteArticle(event) {
     const DATA = getJSONfromLocalStorage("SavedArticles")
     const LINK = LI.querySelector("a").href
     
+    const POPUPS = document.querySelector(".popupUndelet")
+    
     DATA.forEach(function (object, index) {
         if (object.url === LINK) {
-            if (confirm("Are you sure you want to delete whis article")) {
+            let deleteTime = 120000 // 2 min
+            let counter = deleteTime / 1000 
+            const TIMER = setTimeout(deletePOPUP, deleteTime); 
+            TIMER
+            
+            function deletePOPUP() {
                 deleteJSONfromLocalStaorage("SavedArticles", index) 
-                LI.outerHTML = ""
+                POPUP.outerHTML = ""
+                if (LI.parentElement.childElementCount === 1) LI.parentElement.parentElement.outerHTML = ""
+                else LI.outerHTML = ""
             }
+            
+            const POPUP = document.createElement("li")
+            const UNDELET = document.createElement("button")
+            UNDELET.innerHTML = "Undelet"
+            const REMOVE = document.createElement("button")
+            REMOVE.innerHTML = 'delet'
+            POPUP.innerHTML = `<span>"${object.heading.split(" ").slice(0, 3).join(" ") + "..."}" will be deleted in <span class="counter"></span> seconds</span><span class="popupButtons"></span>`
+            POPUP.querySelector(".popupButtons").append(UNDELET)
+            POPUP.querySelector(".popupButtons").append(REMOVE)
+            
+            POPUPS.append(POPUP)
+
+            function startCount() {
+                counter--
+                POPUP.querySelector(".counter").innerHTML = counter
+                if (POPUP.parentElement) setTimeout(startCount, 1000);
+            }
+            startCount()
+
+            UNDELET.addEventListener("click", function () {
+                clearTimeout(TIMER)
+                POPUP.outerHTML = ""
+                return
+            })
+            REMOVE.addEventListener("click", function () {
+                deletePOPUP()
+            })
+            
         }
     });
-
+    
 } 

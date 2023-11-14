@@ -1,0 +1,40 @@
+.popupUndelet {
+    display: grid;
+    gap: .5em;
+
+    margin-right: 1em;
+
+    color: var(--darkest);
+    text-align: start;
+
+    position: fixed;
+    inset: auto auto 1em 1em;
+    z-index: 75;
+    
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .5em;
+
+        background-color: var(--brand);
+        border-radius: 1em;
+        padding: 1em;
+
+        .popupButtons{
+            display: flex;
+            gap: .5em;
+        }
+
+        button {
+            border: none;
+            background-color: var(--darkest);
+            padding: .25em .5em;
+            border-radius: .5em;
+
+            font-size: 1em;
+            color: var(--brand);
+            text-transform: uppercase;
+        }
+    }
+}

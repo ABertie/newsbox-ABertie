@@ -7,6 +7,9 @@ export default (function () {
     
     const DATA = getJSONfromLocalStorage("SavedArticles")
     const MAIN = document.querySelector("main")
+    const POPUPS = document.createElement("ul")
+    POPUPS.classList.add("popupUndelet")
+    MAIN.append(POPUPS)
     let categories = []
 
     DATA.forEach(object => {
@@ -38,6 +41,7 @@ export default (function () {
                     if (object.img) {
                         LI.innerHTML = 
                         `<article>
+                            <span class="articlesCategories" hidden>${object.category}</span>
                             <a href="${object.url}" target="_blank">
                                 <img src="${object.img}">
                                 <h1>${object.heading}</h1>
@@ -51,6 +55,7 @@ export default (function () {
                     else {
                         LI.innerHTML = `
                         <article>
+                            <span class="articlesCategories" hidden>${object.category}</span>
                             <a href="${object.url}" target="_blank">
                                 <h1>${object.heading}</h1>
                                 <p>${object.text}</p>
