@@ -3,7 +3,7 @@ import { CATEGORIES_ICONS } from "./savedInLocalstorage";
 import { swipe } from "./swipe";
 
 export default (function () {
-    if (!window.location.pathname.includes("archive.html") || !window.location.pathname.includes("archive")) return
+    if (!window.location.pathname.includes("archive.html") || window.location.pathname !== "/archive") return
     
     const DATA = getJSONfromLocalStorage("SavedArticles")
     const MAIN = document.querySelector("main")
