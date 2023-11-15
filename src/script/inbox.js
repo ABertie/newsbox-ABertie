@@ -18,24 +18,29 @@ export default (async function() {
         BUTTON.classList.add("categoryButton")
         const ARTICLES = document.createElement("ul")
         BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
-        BUTTON.addEventListener("click", function clickHandler() {
+        BUTTON.addEventListener("click", clickHandler)
+
+        function clickHandler() {
             let direction
-            
+            BUTTON.removeEventListener("click", clickHandler)
+
             if (ARTICLES.innerHTML !== "") {
                 BUTTON.querySelector(".fa-chevron-down").style.animation = "rotateUp .5s"
-                BUTTON.addEventListener("animationend", function() {
+                BUTTON.addEventListener("animationend", animatUp)
+                function animatUp() {
                     BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
-                })
-                direction = "Up"
-                setTimeout(() => {
                     ARTICLES.innerHTML = ""
-                }, 900)
+                    BUTTON.removeEventListener("animationend", animatUp)
+                }
+                direction = "Up"
             }
             else {
                 BUTTON.querySelector(".fa-chevron-right").style.animation = "rotateDown .5s"
-                BUTTON.addEventListener("animationend", function() {
+                BUTTON.addEventListener("animationend", animatDown)
+                function animatDown() {
                     BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-down"></i>'
-                })
+                    BUTTON.removeEventListener("animationend", animatDown)
+                }
 
                 direction = "Down"
 
@@ -75,8 +80,10 @@ export default (async function() {
                 })
             }
             ARTICLES.style.animation = `slide${direction} 1s`
-            direction = null
-        })
+            ARTICLES.addEventListener("animationend", function() {
+                BUTTON.addEventListener("click", clickHandler)
+            })
+        }
             
         CATEGORY.append(BUTTON)
         CATEGORY.append(ARTICLES)
