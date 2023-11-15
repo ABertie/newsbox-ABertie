@@ -40,9 +40,22 @@ export function deleteArticle(event) {
             
             function deletePOPUP() {
                 deleteJSONfromLocalStaorage("SavedArticles", index) 
-                POPUP.outerHTML = ""
-                if (LI.parentElement.childElementCount === 1) LI.parentElement.parentElement.outerHTML = ""
-                else LI.outerHTML = ""
+                POPUP.style.animation = "disappear .5s ease"
+                POPUP.addEventListener("animationend", function() {
+                    POPUP.outerHTML = ""
+                })
+                if (LI.parentElement.childElementCount === 1) {
+                    LI.parentElement.parentElement.style.animation = "moveRight .5s linear"
+                    LI.parentElement.parentElement.addEventListener("animationend", function () {
+                        LI.parentElement.parentElement.outerHTML = ""
+                    })
+                }
+                else {
+                    LI.style.animation = "moveRight .5s linear"
+                    LI.addEventListener("animationend", function () {
+                        LI.outerHTML = ""
+                    })
+                }
             }
             
             const POPUP = document.createElement("li")
@@ -55,24 +68,30 @@ export function deleteArticle(event) {
             POPUP.querySelector(".popupButtons").append(REMOVE)
             
             POPUPS.append(POPUP)
-
+            POPUPS.childNodes.forEach((popup) => {
+                popup.style.animation = "moveUp .5s linear"
+                popup.addEventListener("animationend", function() {
+                    popup.style.animation = ""
+                })
+            })
+            
             function startCount() {
-                counter--
                 POPUP.querySelector(".counter").innerHTML = counter
+                counter--
                 if (POPUP.parentElement) setTimeout(startCount, 1000);
             }
             startCount()
 
             UNDELET.addEventListener("click", function () {
                 clearTimeout(TIMER)
-                POPUP.outerHTML = ""
-                return
+                POPUP.style.animation = "disappear .5s ease"
+                POPUP.addEventListener("animationend", function() {
+                    POPUP.outerHTML = ""
+                })
             })
             REMOVE.addEventListener("click", function () {
                 deletePOPUP()
             })
-            
         }
     });
-    
 } 

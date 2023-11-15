@@ -1,5 +1,6 @@
 .popupUndelet {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: .5em;
 
     margin-right: 1em;
@@ -10,17 +11,21 @@
     position: fixed;
     inset: auto auto 1em 1em;
     z-index: 75;
+
     
     li {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap;
         gap: .5em;
-
+        
         background-color: var(--brand);
         border-radius: 1em;
         padding: 1em;
-
+        
+        // animation: moveUp .5s linear;
+        
         .popupButtons{
             display: flex;
             gap: .5em;

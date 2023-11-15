@@ -1,4 +1,3 @@
-import { Declaration } from "postcss";
 import { categories , CATEGORIES_ICONS } from "./savedInLocalstorage";
 import { swipe } from "./swipe";
 
@@ -20,19 +19,26 @@ export default (async function() {
         const ARTICLES = document.createElement("ul")
         BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
         BUTTON.addEventListener("click", function clickHandler() {
-            BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-down"></i>'
-
-            let declaration
+            let direction
             
             if (ARTICLES.innerHTML !== "") {
-                BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
-                declaration = "Up"
+                BUTTON.querySelector(".fa-chevron-down").style.animation = "rotateUp .5s"
+                BUTTON.addEventListener("animationend", function() {
+                    BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
+                })
+                direction = "Up"
                 setTimeout(() => {
                     ARTICLES.innerHTML = ""
                 }, 900)
             }
             else {
-                declaration = "Down"
+                BUTTON.querySelector(".fa-chevron-right").style.animation = "rotateDown .5s"
+                BUTTON.addEventListener("animationend", function() {
+                    BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-down"></i>'
+                })
+
+                direction = "Down"
+
                 fetch(`https://api.nytimes.com/svc/topstories/v2/${element}.json?api-key=LNlTIFnb0NXHyHx2WdIRXyjml6HXIlLJ`)
                     .then(function(response) {
                         if (response.status !== 200) 
@@ -68,7 +74,8 @@ export default (async function() {
                     swipe()
                 })
             }
-            ARTICLES.style.animation = `slide${declaration} 1s`
+            ARTICLES.style.animation = `slide${direction} 1s`
+            direction = null
         })
             
         CATEGORY.append(BUTTON)

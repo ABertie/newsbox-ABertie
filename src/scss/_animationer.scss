@@ -7,6 +7,15 @@
     }
 }
 
+@keyframes moveRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
 @keyframes moveDown {
     0% {
         transform: translateY(-100%);
@@ -16,13 +25,22 @@
     }
 }
 
+@keyframes moveUp {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 @keyframes slideDown {
     0% {
         max-height: 0;
         overflow: hidden;
     }
     100% {
-        max-height: 100vh;
+        max-height: 300vh;
     }
 }
 
@@ -33,5 +51,25 @@
     100% {
         max-height: 0;
         overflow: hidden;
+    }
+}
+
+@keyframes rotateDown{
+    100% {
+        transform: rotate(90deg);
+    }
+}
+@keyframes rotateUp{
+    100% {
+        transform: rotate(-90deg);
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
