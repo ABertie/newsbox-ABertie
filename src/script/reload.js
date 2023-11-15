@@ -14,7 +14,6 @@ export default (function () {
             y = TOUCH__EVENT
             setTimeout(() => {
                 y = null
-                console.log(y);
             }, 500);
         }
         else if (event.type === "touchend" && window.scrollY === 0 && y) {
