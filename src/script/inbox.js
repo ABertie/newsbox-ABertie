@@ -19,33 +19,46 @@ export default (async function() {
         const ARTICLES = document.createElement("ul")
         BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
         BUTTON.addEventListener("click", function clickHandler() {
-            BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-down"></i>'
+            let direction
             
             if (ARTICLES.innerHTML !== "") {
-                BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
-                ARTICLES.innerHTML = ""
+                BUTTON.querySelector(".fa-chevron-down").style.animation = "rotateUp .5s"
+                BUTTON.addEventListener("animationend", function() {
+                    BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
+                })
+                direction = "Up"
+                setTimeout(() => {
+                    ARTICLES.innerHTML = ""
+                }, 900)
             }
             else {
-                fetch(`https://api.nytimes.com/svc/topstories/v2/${element}.json?api-key=LNlTIFnb0NXHyHx2WdIRXyjml6HXIlLJ`)
-                .then(function(response) {
-                    if (response.status !== 200) 
-                    throw new Error("fejlbesked")
-                return response.json()
-            })
-            .then(function(data) {
-                // console.log(data);
-                
-                data.results.forEach(object => {
-                    if (object.item_type === "Article" || object.item_type === "Interactive") {
-                        if (ARTICLES.childElementCount > COUNT) return
-                        const LI = document.createElement("li")
+                BUTTON.querySelector(".fa-chevron-right").style.animation = "rotateDown .5s"
+                BUTTON.addEventListener("animationend", function() {
+                    BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-down"></i>'
+                })
 
-                        if (object.multimedia) {
+                direction = "Down"
+
+                fetch(`https://api.nytimes.com/svc/topstories/v2/${element}.json?api-key=LNlTIFnb0NXHyHx2WdIRXyjml6HXIlLJ`)
+                    .then(function(response) {
+                        if (response.status !== 200) 
+                        throw new Error("fejlbesked")
+                    return response.json()
+                    })
+                .then(function(data) {
+                    // console.log(data);
+                    data.results.forEach(object => {
+                        if (object.item_type === "Article" || object.item_type === "Interactive") {
+                            if (ARTICLES.childElementCount > COUNT) return
+                            const LI = document.createElement("li")
+                            
                             LI.innerHTML = 
                             `<article>
                                 <span class="articlesCategories" hidden>${element}</span>
                                 <a href="${object.url}" target="_blank">
-                                    <img src="${object.multimedia[2].url}">
+                                    ${object.multimedia 
+                                        ? `<img src="${object.multimedia[2].url}">`
+                                        : ""}
                                     <h1>${object.title}</h1>
                                     <p>${object.abstract}</p>
                                 </a>
@@ -55,28 +68,14 @@ export default (async function() {
                             </article>`
 
                             ARTICLES.append(LI)
-                            } 
-                            else {
-                                LI.innerHTML = `
-                                <article>
-                                    <span class="articlesCategories" hidden>${element}</span>
-                                    <a href="${object.url}" target="_blank">
-                                        <h1>${object.title}</h1>
-                                        <p>${object.abstract}</p>
-                                    </a>
-                                    <button class="saveButton">${localStorage.getItem("SavedArticles").includes(object.url) 
-                                    ? '<i class="fa-solid fa-check-to-slot"></i>' 
-                                    : '<i class="fa-solid fa-inbox"></i>'}</button>
-                                </article>`
-
-                                ARTICLES.append(LI)
-                            }
                         }
                         else return 
                     });
                     swipe()
                 })
             }
+            ARTICLES.style.animation = `slide${direction} 1s`
+            direction = null
         })
             
         CATEGORY.append(BUTTON)

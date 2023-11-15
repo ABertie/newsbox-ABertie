@@ -1,6 +1,7 @@
-@use "./scss/variables" as var;
-@use "./scss/reset";
+@use "./scss/variables";
 @use "./scss/darkTheme";
+@use "./scss/reset";
 @use "./scss/animationer";
 @use "./scss/articles";
 @use "./scss/checkList";
+@use "./scss/popup"

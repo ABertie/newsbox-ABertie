@@ -1,6 +1,3 @@
-@use "./variables" as var;
-@use "./darkTheme";
-
 * {
     margin: 0;
     padding: 0;
@@ -78,6 +75,8 @@ main {
     text-align: center;
 
     position: relative;
+
+    animation: slideDown 1s linear;
 }
 
 footer {

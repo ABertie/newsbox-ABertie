@@ -23,6 +23,9 @@ export function swipe() {
             
             if (event.type === "touchstart") {
                 x = TOUCH__EVENT
+                setTimeout(() => {
+                    x = null
+                }, 300);
             }
             else if (event.type === "touchend") {
     
@@ -34,6 +37,7 @@ export function swipe() {
     
                 if(Direction) {
                     article.addEventListener("animationstart", function() {
+                        article.querySelector("a").style.gridTemplateColumns = "1fr 3fr"
                         article.removeEventListener("touchstart", touchHandler)
                         article.removeEventListener("touchend", touchHandler)
                     })

@@ -7,6 +7,9 @@ export default (function () {
     
     const DATA = getJSONfromLocalStorage("SavedArticles")
     const MAIN = document.querySelector("main")
+    const POPUPS = document.createElement("ul")
+    POPUPS.classList.add("popupUndelet")
+    MAIN.append(POPUPS)
     let categories = []
 
     DATA.forEach(object => {
@@ -24,45 +27,50 @@ export default (function () {
         const ARTICLES = document.createElement("ul")
         BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
         BUTTON.addEventListener("click", function () {
-            BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-down"></i>'
+            let direction
             
             if (ARTICLES.innerHTML !== "") {
-                BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
-                ARTICLES.innerHTML = ""
+                BUTTON.querySelector(".fa-chevron-down").style.animation = "rotateUp .5s"
+                BUTTON.addEventListener("animationend", function() {
+                    BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-right"></i>'
+                })
+                direction = "Up"
+                setTimeout(() => {
+                    ARTICLES.innerHTML = ""
+                }, 900)
             }
             else {
-                DATA.forEach(function (object) {
+                BUTTON.querySelector(".fa-chevron-right").style.animation = "rotateDown .5s"
+                BUTTON.addEventListener("animationend", function() {
+                    BUTTON.innerHTML = `<i class="fa-solid fa-${icon}"></i>` + element + '<i class="fa-solid fa-chevron-down"></i>'
+                })
+
+                direction = "Down"
+
+                getJSONfromLocalStorage("SavedArticles").forEach(function (object) {
                     if (object.category !== element) return
                     const LI = document.createElement("li")
 
-                    if (object.img) {
-                        LI.innerHTML = 
-                        `<article>
-                            <a href="${object.url}" target="_blank">
-                                <img src="${object.img}">
-                                <h1>${object.heading}</h1>
-                                <p>${object.text}</p>
-                            </a>
-                            <button class="deleteButton"><i class="fa-solid fa-trash"></i></button>
-                        </article>`
+                    LI.innerHTML = 
+                    `<article>
+                        <span class="articlesCategories" hidden>${object.category}</span>
+                        <a href="${object.url}" target="_blank">
+                        ${object.img 
+                            ? `<img src="${object.img}">`
+                            : ""}
+                            <h1>${object.heading}</h1>
+                            <p>${object.text}</p>
+                        </a>
+                        <button class="deleteButton"><i class="fa-solid fa-trash"></i></button>
+                    </article>`
 
-                        ARTICLES.append(LI)
-                    } 
-                    else {
-                        LI.innerHTML = `
-                        <article>
-                            <a href="${object.url}" target="_blank">
-                                <h1>${object.heading}</h1>
-                                <p>${object.text}</p>
-                            </a>
-                            <button class="deleteButton"><i class="fa-solid fa-trash"></i></button>
-                        </article>`
-
-                        ARTICLES.append(LI)
-                    }
-                });
+                    ARTICLES.append(LI)
+                    
+                })
                 swipe()
             }
+            ARTICLES.style.animation = `slide${direction} 1s`
+            direction = null
         })
             
         CATEGORY.append(BUTTON)

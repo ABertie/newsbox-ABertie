@@ -7,18 +7,20 @@ export default (function () {
     LOADER.classList.add("fa-solid")
     LOADER.classList.add("fa-spinner")
     LOADER.classList.add("fa-spin-pulse")
-            
+    
     function touchHandler(event) {
         const TOUCH__EVENT = event.changedTouches[0].clientY
-        
         if (event.type === "touchstart") {
             y = TOUCH__EVENT
+            setTimeout(() => {
+                y = null
+                console.log(y);
+            }, 500);
         }
-        else if (event.type === "touchend") {
+        else if (event.type === "touchend" && window.scrollY === 0 && y) {
 
             let Direction
-            const TOLERANCE = 100
-            
+            const TOLERANCE = window.innerHeight / 3
             if (y + TOLERANCE < TOUCH__EVENT) Direction = "Down"
             else Direction = null
             
