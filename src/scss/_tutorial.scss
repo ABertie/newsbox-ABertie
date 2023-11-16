@@ -1,0 +1,117 @@
+@mixin tutorial($text, $textPlaced) {
+    &::before {
+        content: '';
+        
+        width: 1em;
+        height: 1em;
+        background-color: var(--brand);
+        border-radius: .25em;
+
+        position: absolute;
+        left: auto;
+        right: calc(50% - .5em);
+        top: calc(100% + .6em);
+        
+        transform: rotate(45deg);
+    }
+    &::after {
+        content: $text;
+
+        width: max-content;
+        background-color: var(--brand);
+        padding: .5em;
+        border-radius: .5em;
+        
+        font-weight: 200;
+        font-family: var(--font);
+        color: var(--typography-snow);
+
+        position: absolute;
+        inset: $textPlaced;
+    }
+}
+
+@mixin icon($elementPlaced, $text, $textPlaced) {
+    padding: .5em .6em;
+    border-radius: 50%;
+    background-color: var(--lightest);
+
+    color: var(--darkest);
+    
+    position: absolute;
+    inset: $elementPlaced;
+
+    @include tutorial($text: $text, $textPlaced: $textPlaced);
+}
+
+@mixin section($iconPlaced, $text, $textPlaced) {
+    align-self: center;
+    position: relative;
+
+    .tutorial__movement{
+        color: var(--brand);
+        font-size: 3em;
+
+        position: absolute;
+        inset: $iconPlaced;
+        z-index: 1;
+        
+        transform: rotate(-20deg);
+
+        & + .fa-left-long{
+            transform: rotate(0deg);
+            inset: $iconPlaced;
+            right: calc(30% + 1em);
+            top: 1.7em;
+        }
+    }
+    @include tutorial($text: $text, $textPlaced: $textPlaced);
+}
+
+.tutorial {
+    $left: calc(100% + 1em) 0 auto auto; 
+    $right: calc(100% + 1em) auto auto 0; 
+    $center: calc(100% + 1em) calc(50% - 2em) auto auto; 
+
+    display: grid;
+
+    $bg-color: #1b1c20; /* var(--typography-onyx) */
+    background-color: rgba($bg-color, .8);
+
+    color: var(--typography-snow);
+
+    position: fixed;
+    inset: 0 0 0 0;
+    z-index: 1000;
+
+    .skipButton {
+        align-self: center;
+        justify-self: center;
+
+        background-color: transparent;
+        border: 1px solid var(--typography-snow);
+        padding: 1.25em 1em;
+        border-radius: 50%;
+
+        color: inherit;
+        text-transform: uppercase;
+    }
+    &__archive {
+        @include icon($elementPlaced: 1em auto auto .9em, $text: "View you archived articles", $textPlaced: $right);
+    }
+    &__settings {
+        @include icon($elementPlaced: 1em .9em auto auto, $text: "Customize your page", $textPlaced: $left);
+    }
+    &__sectionFirst {
+        @include section($iconPlaced: .25em 30% auto auto, $text: "See more articles", $textPlaced: $center);
+    }
+    &__sectionSecond {
+        @include section($iconPlaced: 2em 30% auto auto, $text: "See the full article", $textPlaced: $center);
+    }
+    &__sectionThird {
+        @include section($iconPlaced: 2em 30% auto auto, $text: "Swipe", $textPlaced: $center);
+    }
+    &__sectionFourth {
+        @include section($iconPlaced: 2.25em .3em auto auto, $text: "Save article in archive", $textPlaced: $center);
+    }
+}

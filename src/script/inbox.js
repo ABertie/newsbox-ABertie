@@ -2,7 +2,8 @@ import { categories , CATEGORIES_ICONS } from "./savedInLocalstorage";
 import { swipe } from "./swipe";
 
 export default (async function() {
-    if (window.location.pathname !== "/") return //!window.location.pathname.includes("index.html") || 
+    if (window.location.pathname !== "/") return 
+    // if (!window.location.pathname.includes("index.html")) return 
     
     const COUNT = 7 // count of articles for each categorie - 1
     
