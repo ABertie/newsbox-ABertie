@@ -1,0 +1,155 @@
+@mixin tutorial($text, $textPlaced) {
+    &::before {
+        content: '';
+        
+        width: 1em;
+        height: 1em;
+        background-color: var(--brand);
+        border-radius: .25em;
+
+        position: absolute;
+        left: auto;
+        right: calc(50% - .5em);
+        top: calc(100% + .6em);
+        
+        transform: rotate(45deg);
+    }
+    &::after {
+        content: $text;
+
+        @if $textPlaced == center {
+            width: fit-content;
+        }
+        @else {
+            width: max-content;
+        }
+        margin: 0 auto;
+        background-color: var(--brand);
+        padding: .5em;
+        border-radius: .5em;
+        
+        font-weight: 200;
+        font-family: var(--font);
+        text-transform: none;
+        color: var(--typography-snow);
+
+        position: absolute;
+        @if $textPlaced == left {
+            inset: calc(100% + 1em) 0 auto auto;
+        }
+        @else if $textPlaced == right {
+            inset: calc(100% + 1em) auto auto 0;
+        }
+        @else if $textPlaced == center {
+            inset: calc(100% + 1em) 0 auto 0;
+        }
+    }
+}
+
+@mixin icon($elementPlaced, $text, $textPlaced) {
+    padding: .5em;
+    width: 2.3em;
+    border-radius: 50%;
+    background-color: var(--lightest);
+
+    color: var(--darkest);
+    text-align: center;
+    
+    position: absolute;
+    inset: $elementPlaced;
+
+    @include tutorial($text: $text, $textPlaced: $textPlaced);
+}
+
+@mixin section($iconPlaced, $text, $textPlaced) {
+    align-self: center;
+    position: relative;
+
+    .tutorial__movement{
+        color: var(--brand);
+        font-size: 3em;
+
+        position: absolute;
+        inset: $iconPlaced;
+        z-index: 1;
+        
+        transform: rotate(-20deg);
+
+        & + .fa-left-long{
+            transform: rotate(0deg);
+            inset: $iconPlaced;
+            right: calc(30% + 1em);
+            top: 1.7em;
+        }
+    }
+    @include tutorial($text: $text, $textPlaced: $textPlaced);
+}
+
+.tutorial {
+    display: grid;
+
+    $bg-color: #1b1c20; /* var(--typography-onyx) */
+    background-color: rgba($bg-color, .8);
+
+    color: var(--typography-snow);
+
+    position: fixed;
+    inset: 0 0 0 0;
+    z-index: 1000;
+
+    .skipButton {
+        align-self: center;
+        justify-self: center;
+
+        background-color: transparent;
+        border: 1px solid var(--typography-snow);
+        padding: 1.25em 1em;
+        border-radius: 50%;
+
+        color: inherit;
+        text-transform: uppercase;
+    }
+    &__archive {
+        @include icon($elementPlaced: 1em auto auto .9em, $text: "View you archived articles", $textPlaced: right);
+    }
+    &__settings {
+        @include icon($elementPlaced: 1em .9em auto auto, $text: "Customize your page", $textPlaced: left);
+    }
+    &__sectionFirst {
+        @include section($iconPlaced: .25em 30% auto auto, $text: "See more articles", $textPlaced: center);
+    }
+    &__sectionSecond {
+        @include section($iconPlaced: 2em 30% auto auto, $text: "See the full article", $textPlaced: center);
+    }
+    &__sectionThird {
+        @include section($iconPlaced: 2em 30% auto auto, $text: "Swipe", $textPlaced: center);
+    }
+    &__sectionFourth {
+        @include section($iconPlaced: 2.25em .3em auto auto, $text: "Save article in archive", $textPlaced: center);
+    }
+    &__sectionFifth {
+        @include section($iconPlaced: 2em 30% auto auto, $text: "Swipe", $textPlaced: center);
+    }
+    &__sectionSixth {
+        @include section($iconPlaced: 2.25em .3em auto auto, $text: "Delete article in archive", $textPlaced: center);
+    }
+    &__back {
+        @include icon($elementPlaced: 1em auto auto .7em, $text: "Go back to inbox", $textPlaced: right);
+    }
+    &__checked {
+        @include section($iconPlaced: .25em 30% auto auto, $text: "Control if you want the categories to be displayed in inbox", $textPlaced: center);
+    }
+    &__undchecked {
+        @include section($iconPlaced: .25em 30% auto auto, $text: "Now this category would not be displayed in inbox", $textPlaced: center);
+    }
+    &__theme {
+        height: min-content;
+        margin: 0 auto;
+
+        text-align: center;
+        align-self: center;
+        position: relative;
+
+        @include tutorial($text: "Toggle dark and light mode", $textPlaced: left);
+    }
+}

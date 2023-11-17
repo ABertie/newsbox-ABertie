@@ -1,7 +1,7 @@
 import { categories , CATEGORIES_ICONS } from "./savedInLocalstorage";
 
 export default (function () {
-    if (window.location.pathname !== "/settings") return // !window.location.pathname.includes("settings.html") || 
+    if (!window.location.pathname.includes("/settings")) return 
 
     const CHECKLIST = document.querySelector(".categoriesChecklist")
     
