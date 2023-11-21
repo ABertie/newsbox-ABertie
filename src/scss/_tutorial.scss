@@ -81,6 +81,12 @@
             right: calc(30% + 1em);
             top: 1.7em;
         }
+
+        & + .fa-up-down {
+            transform: rotate(0deg);
+            right: .5em;
+            top: .1em;
+        }
     }
     @include tutorial($text: $text, $textPlaced: $textPlaced);
 }
@@ -142,6 +148,9 @@
     &__undchecked {
         @include section($iconPlaced: .25em 30% auto auto, $text: "Now this category would not be displayed in inbox", $textPlaced: center);
     }
+    &__order {
+        @include section($iconPlaced: .4em -.25em auto auto, $text: "Move the order of the categories", $textPlaced: center);
+    }
     &__theme {
         height: min-content;
         margin: 0 auto;
@@ -151,5 +160,15 @@
         position: relative;
 
         @include tutorial($text: "Toggle dark and light mode", $textPlaced: left);
+    }
+    &__reset {
+        height: min-content;
+        margin: 0 auto;
+
+        text-align: center;
+        align-self: center;
+        position: relative;
+
+        @include tutorial($text: "Reset all you settings", $textPlaced: left);
     }
 }
