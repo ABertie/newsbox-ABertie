@@ -20,8 +20,8 @@ body.darkTheme {
     --lightest: var(--typography-slate);
 } 
 
-.themeButton {
-    margin-top: 3em;
+.themeButton, .resetButton {
+    margin: 1em auto 0;
     padding: 1em;
     border-radius: 2em;
     background-color: var(--light);
@@ -30,4 +30,8 @@ body.darkTheme {
     color: var(--darkest);
     text-transform: uppercase;
     font-weight: lighter;
+}
+
+.themeButton {
+    margin: 3em auto 0;
 }

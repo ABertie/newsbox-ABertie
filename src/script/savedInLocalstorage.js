@@ -78,10 +78,14 @@ export const CATEGORIES_ICONS = [{
     }
 ]
 
+export let order 
+
+if (!localStorage.getItem("CategoriesOrder")) order = ORIGINAL_CATEGORIES
+else order = localStorage.getItem("CategoriesOrder").split(",")
 export let categories 
 
 if (!localStorage.getItem("SavedCategories")) {
-    categories = ORIGINAL_CATEGORIES
+    categories = order
     localStorage.setItem("SavedCategories", categories)
 }
 else categories = localStorage.getItem("SavedCategories").split(",")
