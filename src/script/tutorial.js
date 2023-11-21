@@ -136,7 +136,7 @@ export default (function createTutorial() {
         && window.location.pathname.includes("/settings")) {
             TUTORIAL.style.gridTemplateRows = "1fr 1fr"
             TUTORIAL.removeChild(TUTORIAL.querySelector(".tutorial__back"))
-            createLabel("checked", true)
+            createLabel("checked", true, '<i class="fa-solid fa-hand-pointer tutorial__movement"></i>')
         }
         else if (TUTORIAL.innerHTML.includes("tutorial__checked")) {
             TUTORIAL.removeChild(TUTORIAL.querySelector(".tutorial__checked"))
@@ -144,10 +144,22 @@ export default (function createTutorial() {
         }
         else if (TUTORIAL.innerHTML.includes("tutorial__undchecked")) {
             TUTORIAL.removeChild(TUTORIAL.querySelector(".tutorial__undchecked"))
+            createLabel("order", true, '<i class="fa-solid fa-hand-pointer tutorial__movement"></i><i class="fa-solid fa-up-down tutorial__movement"></i>')
+        }
+        else if (TUTORIAL.innerHTML.includes("tutorial__order")) {
+            TUTORIAL.removeChild(TUTORIAL.querySelector(".tutorial__order"))
             const BUTTON = document.createElement("button")
             BUTTON.classList.add("themeButton")
             BUTTON.classList.add("tutorial__theme")
             BUTTON.innerHTML = `Toggle ${localStorage.getItem("theme") === "darkTheme" ? "light" : "dark"} mode`
+            TUTORIAL.prepend(BUTTON)
+        }
+        else if (TUTORIAL.innerHTML.includes("tutorial__theme")) {
+            TUTORIAL.removeChild(TUTORIAL.querySelector(".tutorial__theme"))
+            const BUTTON = document.createElement("button")
+            BUTTON.classList.add("resetButton")
+            BUTTON.classList.add("tutorial__reset")
+            BUTTON.innerHTML = "Reset settings"
             TUTORIAL.prepend(BUTTON)
         }
         else if (TUTORIAL.innerHTML.includes("tutorial__back") 
@@ -228,7 +240,7 @@ export default (function createTutorial() {
             </ul>`)
         }
         else if (TUTORIAL.innerHTML.includes("tutorial__sectionFourth") 
-        || TUTORIAL.innerHTML.includes("tutorial__theme")
+        || TUTORIAL.innerHTML.includes("tutorial__reset")
         || TUTORIAL.innerHTML.includes("tutorial__sectionSixth")) {
             TUTORIAL.removeAttribute("style")
             BODY.removeChild(TUTORIAL)
@@ -266,10 +278,11 @@ export default (function createTutorial() {
         SECTION.classList.add(`tutorial__${className}`)
         SECTION.innerHTML = `
         <label>
-            ${icon === true ? '<i class="fa-solid fa-hand-pointer tutorial__movement"></i>' : ""}
+            ${icon? icon : ""}
             category
             <input type="checkbox" ${checked === true ? 'checked=""' : ""}>
             <span class="slider"></span>
+            <i class="fa-solid fa-bars"></i>
         </label>`
         TUTORIAL.prepend(SECTION)
     }
