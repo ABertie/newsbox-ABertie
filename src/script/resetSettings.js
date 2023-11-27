@@ -1,4 +1,6 @@
 export default(function() {
+    if (!window.location.pathname.includes("/settings")) return 
+
     const RESET_BUTTON = document.querySelector(".resetButton")
 
     RESET_BUTTON.addEventListener("click", function () {
